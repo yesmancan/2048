@@ -97,6 +97,7 @@ function contCheckNeg(a, i) {
     box[i] = 0;
   } else if (box[i] == box[i - a]) {
     box[i - a] = box[i] * 2;
+    logger("Hamle index :" + i + " | " + " Eksi Deger  :" + a);
     userNum(box[i]);
     box[i] = 0;
   }
@@ -108,6 +109,7 @@ function contCheckPos(a, i) {
     box[i] = 0;
   } else if (box[i] == box[i + a]) {
     box[i + a] = box[i] * 2;
+    logger("Hamle index :" + i + " | " + " Eksi Deger  :" + a);
     userNum(box[i]);
     box[i] = 0;
   }
@@ -120,7 +122,7 @@ function newNumber() {
     let t = rnd(15);
     if (box[t] === 0) {
       box[t] = a[rnd(2) - 1];
-      logger("Yeni Oluşturulan Sayı " + box[t])
+      logger("Yeni Oluşturulan Sayı " + box[t] + " Konumu :" + t)
     } else {
       let countEmptyCell = 0;
       for (let i = 0; i < box.length; i++) {
