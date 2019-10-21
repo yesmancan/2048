@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2048</title>
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed" rel="stylesheet">
+</head>
+
+<body>
+    <section class="cont">
+        <section id="userSec">
+            <span>Kullanıcı Puanı : </span>
+            <span id="point">0</span>
+        </section>
+        <div class="gameCont">
+            <div class="color">
+                <div class="box col" data-row="0" data-column="0" data-value="0"></div>
+                <div class="box col" data-row="0" data-column="1" data-value="0"></div>
+                <div class="box col" data-row="0" data-column="2" data-value="0"></div>
+                <div class="box col" data-row="0" data-column="3" data-value="0"></div>
+                <div class="box col" data-row="1" data-column="0" data-value="0"></div>
+                <div class="box col" data-row="1" data-column="1" data-value="0"></div>
+                <div class="box col" data-row="1" data-column="2" data-value="0"></div>
+                <div class="box col" data-row="1" data-column="3" data-value="0"></div>
+                <div class="box col" data-row="2" data-column="0" data-value="0"></div>
+                <div class="box col" data-row="2" data-column="1" data-value="0"></div>
+                <div class="box col" data-row="2" data-column="2" data-value="0"></div>
+                <div class="box col" data-row="2" data-column="3" data-value="0"></div>
+                <div class="box col" data-row="3" data-column="0" data-value="0"></div>
+                <div class="box col" data-row="3" data-column="1" data-value="0"></div>
+                <div class="box col" data-row="3" data-column="2" data-value="0"></div>
+                <div class="box col" data-row="3" data-column="3" data-value="0"></div>
+            </div>
+        </div>
+    </section>
+    <style>
+        html * {
+            font-family: 'IBM Plex Sans Condensed', sans-serif;
+        }
+
+        #userSec {
+            float: left;
+            position: absolute;
+            left: 10%;
+            top: 10%;
+            background-color: #222;
+            padding: 10px 20px;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        #LogSec {
+            float: left;
+            width: 100%;
+        }
+
+        #LogSec>div {
+            background-color: #222;
+            padding: 5px 10px;
+            color: #fff;
+            border-radius: 5px;
+            margin-bottom: 6px;
+            text-align: left;
+        }
+
+        section.cont {
+            width: 100%;
+            text-align: center;
+        }
+
+        .gameCont {
+            width: 450px;
+            display: block;
+            text-align: center;
+            margin: 30px auto 20px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .color {
+            background-color: #bbada0;
+            display: inline-block;
+            padding: 5px;
+        }
+
+        .box.col {
+            width: 100px;
+            height: 100px;
+            background-color: #cdc1b4;
+            float: left;
+            margin: 5px 5px;
+            line-height: 100px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 65px;
+            color: #fff;
+            border-radius: 3px;
+            -webkit-transition: 100ms ease-in-out;
+            -moz-transition: 100ms ease-in-out;
+            transition: 100ms ease-in-out;
+            -webkit-transition-property: -webkit-transform;
+            -moz-transition-property: -moz-transform;
+            transition-property: transform;
+        }
+
+        .c-0 {
+            color: transparent !important;
+        }
+
+        .c-2 {
+            background: #eee4da !important;
+            color: #776e65 !important;
+        }
+
+        .c-4 {
+            color: #f9f6f2 !important;
+            background: #f67c5f !important;
+        }
+
+        .c-8 {
+            color: #f9f6f2 !important;
+            background: #f2b179 !important;
+        }
+
+        .c-16 {
+            color: #f9f6f2 !important;
+            background: #f59563 !important;
+        }
+
+        .c-32 {
+            color: #f9f6f2 !important;
+            background: #f67c5f !important;
+        }
+
+        .c-64 {
+            color: #f9f6f2 !important;
+            background: #f65e3b !important;
+        }
+
+        .c-128 {
+            color: #f9f6f2 !important;
+            background: #edcf72 !important;
+            box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.2381), inset 0 0 0 1px rgba(255, 255, 255, 0.14286) !important;
+        }
+
+        .c-256 {
+            color: #f9f6f2 !important;
+            background: #edcc61 !important;
+            box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.31746), inset 0 0 0 1px rgba(255, 255, 255, 0.19048) !important;
+        }
+    </style>
+    <script src="./index.v2.js"></script>
+</body>
+
+</html>
