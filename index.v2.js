@@ -1,7 +1,6 @@
 'use strict'
 
 const rnd = (c) => { return Math.floor((Math.random(0) * c) + 1); }
-
 const _newNumber = (count = 1) => {
     if (hasMove) {
         for (let i = 0; i < count; i++) {
@@ -11,6 +10,26 @@ const _newNumber = (count = 1) => {
             block.setValue(2);
         }
         hasMove = false;
+    }
+}
+
+class _user_point {
+    constructor(point, name) {
+        this.point = point;
+        this.name = name;
+        this.pointElement = document.getElementById('point');
+        this.nameElement = document.getElementById('name');
+        this.setName(name)
+    }
+
+    setName(newName) {
+        this.nameElement.innerText = newName;
+    }
+    setPoint(newPoint) {
+        this.pointElement.innerText = newPoint;
+    }
+    addPoint(point) {
+        this.pointElement.innerText = Number(this.pointElement.innerText) + Number(point);
     }
 }
 
@@ -27,11 +46,19 @@ class _block {
     }
 
     setValue(value) {
+        this.element.innerText = value;
+        user.addPoint(value);
+        if (Number(value) !== Number(this.value)) {
+            this.element.setAttribute('class', 'box col animated fadeIn c-' + value);
+            hasMove = true;
+        } else {
+            this.element.setAttribute('class', 'box col c-' + value);
+        }
         this.value = value;
-        this.element.innerText = this.value;
-        this.element.setAttribute('class', 'box col c-' + this.value);
     }
 }
+
+const user =new _user_point(0, 'Can Akburu');
 
 let blocks = [];
 let hasMove = true;
@@ -50,6 +77,26 @@ const Init = () => {
 
 window.onload = () => {
     Init();
+
+    document.addEventListener('swiped-left', function (e) {
+        pressLeftArrow();
+        _newNumber();
+    });
+
+    document.addEventListener('swiped-right', function (e) {
+        pressRightArrow();
+        _newNumber();
+    });
+
+    document.addEventListener('swiped-up', function (e) {
+        pressUpArrow();
+        _newNumber();
+    });
+
+    document.addEventListener('swiped-down', function (e) {
+        pressBottomArrow();
+        _newNumber();
+    });
 };
 
 document.onkeyup = (e) => {
@@ -74,8 +121,6 @@ document.onkeyup = (e) => {
             break;
     }
 }
-
-
 const pressRightArrow = () => {
     let _j = 0;
     for (let i = 0; i < 4; i++) {
@@ -137,11 +182,9 @@ const nextBlock = (nextblock, block) => {
         if (nextblock.value === block.value) {
             nextblock.setValue(block.value + block.value);
             block.setValue(0);
-            hasMove = true;
-        }  else if (nextblock.value !== block.value && nextblock.value === 0) {
+        } else if (nextblock.value !== block.value && nextblock.value === 0) {
             nextblock.setValue(block.value);
             block.setValue(0);
-            hasMove = true;
         }
     }
 }
